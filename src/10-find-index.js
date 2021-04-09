@@ -13,6 +13,7 @@
  */
 function findIndex(/* array, value */) {
   throw new Error('Not implemented');
+  // return array.indexOf(value);
 }
 
 module.exports = findIndex;
