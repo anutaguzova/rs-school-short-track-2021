@@ -1,11 +1,15 @@
+const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 const assert = require('assert');
-const List = require('../extensions/list-helpers');
-const Queue = require('../src/14-queue');
 it.optional = require('../extensions/it-optional');
+const ListNode = require('../extensions/list-node');
 
 describe('14-queue', () => {
   const sandbox = sinon.createSandbox();
+  const ListNodeSpy = sandbox.spy(ListNode);
+  const Queue = proxyquire('../src/14-queue', {
+    '../extensions/list-node': ListNodeSpy,
+  });
 
   afterEach(() => {
     sandbox.restore();
@@ -21,10 +25,9 @@ describe('14-queue', () => {
   });
 
   it.optional('should use a ListNode within the methods', () => {
-    const stub = sinon.stub(List, 'createNode');
     const queue = new Queue();
     assert.doesNotThrow(() => queue.enqueue(5));
     assert.strictEqual(queue.dequeue(), 5);
-    assert.strictEqual(stub.called, true);
+    assert.strictEqual(ListNodeSpy.called, true);
   });
 });
