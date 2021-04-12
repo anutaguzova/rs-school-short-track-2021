@@ -11,6 +11,12 @@
  */
 function getCommonCharacterCount(/* s1, s2 */) {
   throw new Error('Not implemented');
+  // const data = {};
+  // data['key'] = 'value';
+  // for (let i = 0; i < s1.length; i++) {
+  //   if (str[i] in data) {
+
+  //   }
 }
 
 module.exports = getCommonCharacterCount;
