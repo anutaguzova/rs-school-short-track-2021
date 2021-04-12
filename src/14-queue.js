@@ -24,7 +24,7 @@ class Queue {
   }
 
   enqueue(element) {
-    const ball = List.createNode(element);
+    const ball = new ListNode(element);
     if (this.capacity < 1) {
       this.head = ball;
       this.tail = ball;
